@@ -1,6 +1,6 @@
-import 'package:deep_link/widgeta/settingsButton.dart';
+import 'package:deep_link/navigation/routes.dart';
+import 'package:deep_link/settings/widgets/settings_button.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -16,13 +16,18 @@ class Settings extends StatelessWidget {
         children: [
           SettingsButton(
             title: 'Account',
-            onTap: () => context.go('/settings/account'),
+            onTap: () => AccountRoute().go(context),
             leadingIcon: Icons.account_circle,
             trailingIcon: Icons.arrow_forward_ios,
           ),
           SettingsButton(
             title: 'Delete Account',
-            onTap: () {},
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('your account has been deleted ^_^ '),
+                duration: Duration(seconds: 2),
+              ));
+            },
             leadingIcon: Icons.delete,
           ),
         ],

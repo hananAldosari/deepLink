@@ -1,5 +1,5 @@
+import 'package:deep_link/navigation/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            onPressed: () => context.go('/settings'),
+            onPressed: () => SettingsRoute().go(context),
             icon: Icon(Icons.settings),
             color: Colors.white,
           ),
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: () => context.go('/pageOne'),
+              onTap: () => PageOneRoute().go(context),
               child: Container(
                 height: 100,
                 width: 190,
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
               width: 10,
             ),
             InkWell(
-              onTap: () => context.go('/pageTwo'),
+              onTap: () => PageTwoRoute().go(context),
               child: Container(
                 height: 100,
                 width: 190,

@@ -1,51 +1,26 @@
-import 'package:deep_link/pages/home/home.dart';
-import 'package:deep_link/pages/home/pageOne.dart';
-import 'package:deep_link/pages/home/pageTwo.dart';
-import 'package:deep_link/pages/settings/account.dart';
-import 'package:deep_link/pages/settings/settings.dart';
+import 'package:deep_link/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+// import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-void main() => runApp(
-      MaterialApp.router(
-        routerConfig: _router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            elevation: 0.0,
-            centerTitle: true,
-            backgroundColor: const Color.fromARGB(255, 142, 149, 161),
-            foregroundColor: Colors.white,
-          ),
+void main() {
+  // To test the navigation history using a web browser, please uncomment this line and its associated import statement.
+  // setUrlStrategy(PathUrlStrategy());
+
+  runApp(
+    MaterialApp.router(
+      routerConfig: _router,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          elevation: 0.0,
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(255, 142, 149, 161),
+          foregroundColor: Colors.white,
         ),
       ),
-    );
-
-final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (_, __) => Home(),
-      routes: [
-        GoRoute(
-          path: 'pageOne',
-          builder: (_, __) => PageOne(),
-        ),
-        GoRoute(
-          path: 'pageTwo',
-          builder: (_, __) => PageTwo(),
-        ),
-        GoRoute(
-          path: 'settings',
-          builder: (_, __) => Settings(),
-          routes: [
-            GoRoute(
-              path: 'account',
-              builder: (_, __) => Account(),
-            ),
-          ],
-        ),
-      ],
     ),
-  ],
-);
+  );
+}
+
+final _router = GoRouter(routes: $appRoutes);
